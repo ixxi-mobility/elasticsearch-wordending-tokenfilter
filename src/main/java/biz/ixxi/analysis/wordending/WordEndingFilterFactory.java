@@ -10,7 +10,6 @@ import org.elasticsearch.index.analysis.AnalysisSettingsRequired;
 import org.elasticsearch.index.settings.IndexSettings;
 
 
-@AnalysisSettingsRequired
 public class WordEndingFilterFactory extends AbstractTokenFilterFactory {
 
     private final String mode;
@@ -20,11 +19,7 @@ public class WordEndingFilterFactory extends AbstractTokenFilterFactory {
                                       @Assisted String name, @Assisted Settings settings) {
     	
         super(index, indexSettings, name, settings);
-        this.mode = settings.get("node.mode", "default");
-        System.out.println("*************************************pouet**********");
-        System.out.println(settings);
-        logger.debug("*********************** pouet *****************************");
-        logger.debug(settings.getAsMap().toString());
+        this.mode = settings.get("mode", "default");
     }
 
     @Override

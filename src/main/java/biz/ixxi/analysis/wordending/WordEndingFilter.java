@@ -12,6 +12,7 @@ import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.AttributeSource;
 
+
 public class WordEndingFilter extends TokenFilter {
 
 	private AttributeSource.State current;
@@ -27,7 +28,7 @@ public class WordEndingFilter extends TokenFilter {
 
 	@Override
 	final public boolean incrementToken() throws IOException {
-		if (mode == "autocomplete") {
+		if ("autocomplete".equalsIgnoreCase(this.mode)) {
 			return autocompleteMode(); // Slower
 		} else {
 			return defaultMode();
